@@ -1,20 +1,16 @@
 
 package com.appyvet.rangebarsample;
 
-import com.appyvet.rangebar.RangeBar;
-import com.appyvet.rangebarsample.colorpicker.ColorPickerDialog;
-import com.appyvet.rangebarsample.colorpicker.Utils;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
 import android.view.Window;
-import android.widget.EditText;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+
+import com.appyvet.rangebar.RangeBar;
+import com.appyvet.rangebarsample.colorpicker.ColorPickerDialog;
+import com.appyvet.rangebarsample.colorpicker.Utils;
 
 public class MainActivity extends Activity implements
         ColorPickerDialog.OnColorSelectedListener {
@@ -78,248 +74,258 @@ public class MainActivity extends Activity implements
         // Gets the RangeBar
         rangebar = (RangeBar) findViewById(R.id.rangebar1);
 
-        rangeButton.setOnClickListener(new View.OnClickListener() {
+//        rangeButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                rangebar.setRangeBarEnabled(!rangebar.isRangeBar());
+//            }
+//        });
+//        disabledButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                rangebar.setEnabled(!rangebar.isEnabled());
+//            }
+//        });
+//
+//        // Setting Index Values -------------------------------
+//
+//        // Gets the index value TextViews
+//        final EditText leftIndexValue = (EditText) findViewById(R.id.leftIndexValue);
+//        final EditText rightIndexValue = (EditText) findViewById(R.id.rightIndexValue);
+//
+//        // Sets the display values of the indices
+//        rangebar.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
+//            @Override
+//            public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex,
+//                                              int rightPinIndex,
+//                                              String leftPinValue, String rightPinValue) {
+//                leftIndexValue.setText("" + leftPinIndex);
+//                rightIndexValue.setText("" + rightPinIndex);
+//            }
+//
+//        });
+//
+//        // Sets the indices themselves upon input from the user
+//        indexButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//
+//                // Gets the String values of all the texts
+//                String leftIndex = leftIndexValue.getText().toString();
+//                String rightIndex = rightIndexValue.getText().toString();
+//
+//                // Catches any IllegalArgumentExceptions; if fails, should throw
+//                // a dialog warning the user
+//                try {
+//                    if (!leftIndex.isEmpty() && !rightIndex.isEmpty()) {
+//                        int leftIntIndex = Integer.parseInt(leftIndex);
+//                        int rightIntIndex = Integer.parseInt(rightIndex);
+//                        rangebar.setRangePinsByIndices(leftIntIndex, rightIntIndex);
+//                    }
+//                } catch (IllegalArgumentException e) {
+//                }
+//            }
+//        });
+//
+//        // Sets the indices by values based upon input from the user
+//        valueButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//
+//                // Gets the String values of all the texts
+//                String leftValue = leftIndexValue.getText().toString();
+//                String rightValue = rightIndexValue.getText().toString();
+//
+//                // Catches any IllegalArgumentExceptions; if fails, should throw
+//                // a dialog warning the user
+//                try {
+//                    if (!leftValue.isEmpty() && !rightValue.isEmpty()) {
+//                        float leftIntIndex = Float.parseFloat(leftValue);
+//                        float rightIntIndex = Float.parseFloat(rightValue);
+//                        rangebar.setRangePinsByValue(leftIntIndex, rightIntIndex);
+//                    }
+//                } catch (IllegalArgumentException e) {
+//                }
+//            }
+//        });
+//
+//        // Setting Number Attributes -------------------------------
+//
+//        // Sets tickStart
+//        final TextView tickStart = (TextView) findViewById(R.id.tickStart);
+//        SeekBar tickStartSeek = (SeekBar) findViewById(R.id.tickStartSeek);
+//        tickStartSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar tickCountSeek, int progress, boolean fromUser) {
+//                try {
+//                    rangebar.setTickStart(progress);
+//                } catch (IllegalArgumentException e) {
+//                }
+//                tickStart.setText("tickStart = " + progress);
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//            }
+//        });
+//
+//        // Sets tickEnd
+//        final TextView tickEnd = (TextView) findViewById(R.id.tickEnd);
+//        SeekBar tickEndSeek = (SeekBar) findViewById(R.id.tickEndSeek);
+//        tickEndSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar tickCountSeek, int progress, boolean fromUser) {
+//                try {
+//                    rangebar.setTickEnd(progress);
+//                } catch (IllegalArgumentException e) {
+//                }
+//                tickEnd.setText("tickEnd = " + progress);
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//            }
+//        });
+//
+//        // Sets tickInterval
+//        final TextView tickInterval = (TextView) findViewById(R.id.tickInterval);
+//        SeekBar tickIntervalSeek = (SeekBar) findViewById(R.id.tickIntervalSeek);
+//        tickIntervalSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar tickCountSeek, int progress, boolean fromUser) {
+//                try {
+//                    rangebar.setTickInterval(progress / 10.0f);
+//                } catch (IllegalArgumentException e) {
+//                }
+//                tickInterval.setText("tickInterval = " + progress / 10.0f);
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//            }
+//        });
+//
+//        // Sets barWeight
+//        final TextView barWeight = (TextView) findViewById(R.id.barWeight);
+//        SeekBar barWeightSeek = (SeekBar) findViewById(R.id.barWeightSeek);
+//        barWeightSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+//
+//            @Override
+//            public void onProgressChanged(SeekBar barWeightSeek, int progress, boolean fromUser) {
+//                rangebar.setBarWeight(progress);
+//                barWeight.setText("barWeight = " + progress);
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//            }
+//        });
+//
+//        // Sets connectingLineWeight
+//        final TextView connectingLineWeight = (TextView) findViewById(R.id.connectingLineWeight);
+//        SeekBar connectingLineWeightSeek = (SeekBar) findViewById(R.id.connectingLineWeightSeek);
+//        connectingLineWeightSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar connectingLineWeightSeek, int progress,
+//                                          boolean fromUser) {
+//                rangebar.setConnectingLineWeight(progress);
+//                connectingLineWeight.setText("connectingLineWeight = " + progress);
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//            }
+//        });
+//
+//        // Sets thumbRadius
+//        final TextView thumbRadius = (TextView) findViewById(R.id.thumbRadius);
+//        SeekBar thumbRadiusSeek = (SeekBar) findViewById(R.id.thumbRadiusSeek);
+//        thumbRadiusSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar thumbRadiusSeek, int progress, boolean fromUser) {
+//                rangebar.setPinRadius(progress);
+//                thumbRadius.setText("Pin Radius = " + progress);
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//            }
+//        });
+//
+//        // Setting Color Attributes---------------------------------
+//
+//        // Sets barColor
+//        barColor.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                initColorPicker(Component.BAR_COLOR, mBarColor, mBarColor);
+//            }
+//        });
+//
+//        // Sets connectingLineColor
+//        connectingLineColor.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                initColorPicker(Component.CONNECTING_LINE_COLOR, mConnectingLineColor,
+//                        mConnectingLineColor);
+//            }
+//        });
+//
+//        // Sets pinColor
+//        pinColor.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                initColorPicker(Component.PIN_COLOR, mPinColor, mPinColor);
+//            }
+//        });
+//        // Sets pinTextColor
+//        pinTextColor.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                initColorPicker(Component.TEXT_COLOR, mTextColor, mTextColor);
+//            }
+//        });
+//        // Sets tickColor
+//        tickColor.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                initColorPicker(Component.TICK_COLOR, mTickColor, mTickColor);
+//            }
+//        });
+//        // Sets selectorColor
+//        selectorColor.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                initColorPicker(Component.SELECTOR_COLOR, mSelectorColor, mSelectorColor);
+//            }
+//        });
+
+        //This making the pin disappear
+        rangebar.postDelayed(new Runnable() {
             @Override
-            public void onClick(View v) {
-                rangebar.setRangeBarEnabled(!rangebar.isRangeBar());
+            public void run() {
+                rangebar.setRangePinsByIndices(0, 3);
             }
-        });
-        disabledButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rangebar.setEnabled(!rangebar.isEnabled());
-            }
-        });
+        }, 2000);
 
-        // Setting Index Values -------------------------------
-
-        // Gets the index value TextViews
-        final EditText leftIndexValue = (EditText) findViewById(R.id.leftIndexValue);
-        final EditText rightIndexValue = (EditText) findViewById(R.id.rightIndexValue);
-
-        // Sets the display values of the indices
-        rangebar.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
-            @Override
-            public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex,
-                    int rightPinIndex,
-                    String leftPinValue, String rightPinValue) {
-                leftIndexValue.setText("" + leftPinIndex);
-                rightIndexValue.setText("" + rightPinIndex);
-            }
-
-        });
-
-        // Sets the indices themselves upon input from the user
-        indexButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                // Gets the String values of all the texts
-                String leftIndex = leftIndexValue.getText().toString();
-                String rightIndex = rightIndexValue.getText().toString();
-
-                // Catches any IllegalArgumentExceptions; if fails, should throw
-                // a dialog warning the user
-                try {
-                    if (!leftIndex.isEmpty() && !rightIndex.isEmpty()) {
-                        int leftIntIndex = Integer.parseInt(leftIndex);
-                        int rightIntIndex = Integer.parseInt(rightIndex);
-                        rangebar.setRangePinsByIndices(leftIntIndex, rightIntIndex);
-                    }
-                } catch (IllegalArgumentException e) {
-                }
-            }
-        });
-
-        // Sets the indices by values based upon input from the user
-        valueButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                // Gets the String values of all the texts
-                String leftValue = leftIndexValue.getText().toString();
-                String rightValue = rightIndexValue.getText().toString();
-
-                // Catches any IllegalArgumentExceptions; if fails, should throw
-                // a dialog warning the user
-                try {
-                    if (!leftValue.isEmpty() && !rightValue.isEmpty()) {
-                        float leftIntIndex = Float.parseFloat(leftValue);
-                        float rightIntIndex = Float.parseFloat(rightValue);
-                        rangebar.setRangePinsByValue(leftIntIndex, rightIntIndex);
-                    }
-                } catch (IllegalArgumentException e) {
-                }
-            }
-        });
-
-        // Setting Number Attributes -------------------------------
-
-        // Sets tickStart
-        final TextView tickStart = (TextView) findViewById(R.id.tickStart);
-        SeekBar tickStartSeek = (SeekBar) findViewById(R.id.tickStartSeek);
-        tickStartSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar tickCountSeek, int progress, boolean fromUser) {
-                try {
-                    rangebar.setTickStart(progress);
-                } catch (IllegalArgumentException e) {
-                }
-                tickStart.setText("tickStart = " + progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        // Sets tickEnd
-        final TextView tickEnd = (TextView) findViewById(R.id.tickEnd);
-        SeekBar tickEndSeek = (SeekBar) findViewById(R.id.tickEndSeek);
-        tickEndSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar tickCountSeek, int progress, boolean fromUser) {
-                try {
-                    rangebar.setTickEnd(progress);
-                } catch (IllegalArgumentException e) {
-                }
-                tickEnd.setText("tickEnd = " + progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        // Sets tickInterval
-        final TextView tickInterval = (TextView) findViewById(R.id.tickInterval);
-        SeekBar tickIntervalSeek = (SeekBar) findViewById(R.id.tickIntervalSeek);
-        tickIntervalSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar tickCountSeek, int progress, boolean fromUser) {
-                try {
-                    rangebar.setTickInterval(progress / 10.0f);
-                } catch (IllegalArgumentException e) {
-                }
-                tickInterval.setText("tickInterval = " + progress / 10.0f);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        // Sets barWeight
-        final TextView barWeight = (TextView) findViewById(R.id.barWeight);
-        SeekBar barWeightSeek = (SeekBar) findViewById(R.id.barWeightSeek);
-        barWeightSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-
-            @Override
-            public void onProgressChanged(SeekBar barWeightSeek, int progress, boolean fromUser) {
-                rangebar.setBarWeight(progress);
-                barWeight.setText("barWeight = " + progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        // Sets connectingLineWeight
-        final TextView connectingLineWeight = (TextView) findViewById(R.id.connectingLineWeight);
-        SeekBar connectingLineWeightSeek = (SeekBar) findViewById(R.id.connectingLineWeightSeek);
-        connectingLineWeightSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar connectingLineWeightSeek, int progress,
-                    boolean fromUser) {
-                rangebar.setConnectingLineWeight(progress);
-                connectingLineWeight.setText("connectingLineWeight = " + progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        // Sets thumbRadius
-        final TextView thumbRadius = (TextView) findViewById(R.id.thumbRadius);
-        SeekBar thumbRadiusSeek = (SeekBar) findViewById(R.id.thumbRadiusSeek);
-        thumbRadiusSeek.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar thumbRadiusSeek, int progress, boolean fromUser){
-                    rangebar.setPinRadius(progress);
-                    thumbRadius.setText("Pin Radius = " + progress);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-
-        // Setting Color Attributes---------------------------------
-
-        // Sets barColor
-        barColor.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                initColorPicker(Component.BAR_COLOR, mBarColor, mBarColor);
-            }
-        });
-
-        // Sets connectingLineColor
-        connectingLineColor.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                initColorPicker(Component.CONNECTING_LINE_COLOR, mConnectingLineColor,
-                        mConnectingLineColor);
-            }
-        });
-
-        // Sets pinColor
-        pinColor.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                initColorPicker(Component.PIN_COLOR, mPinColor, mPinColor);
-            }
-        });
-        // Sets pinTextColor
-        pinTextColor.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                initColorPicker(Component.TEXT_COLOR, mTextColor, mTextColor);
-            }
-        });
-        // Sets tickColor
-        tickColor.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                initColorPicker(Component.TICK_COLOR, mTickColor, mTickColor);
-            }
-        });
-        // Sets selectorColor
-        selectorColor.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                initColorPicker(Component.SELECTOR_COLOR, mSelectorColor, mSelectorColor);
-            }
-        });
-
+        //This works
+//        rangebar.setRangePinsByIndices(0, 3);
     }
 
     /**
@@ -331,7 +337,7 @@ public class MainActivity extends Activity implements
 
     @Override
     public void onColorSelected(int newColor, Component component) {
-        Log.d("Color selected"," new color = "+newColor+ ",compoment = "+component);
+        Log.d("Color selected", " new color = " + newColor + ",compoment = " + component);
         String hexColor = String.format("#%06X", (0xFFFFFF & newColor));
 
         switch (component) {
